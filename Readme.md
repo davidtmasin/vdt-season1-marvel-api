@@ -1,11 +1,8 @@
-
-
 # Viver de Teste 1.ª Temporada
 
 <h1 align="left">
     <img src=".github/logo-stiker.svg" width="250px">
 </h1>
-
 
 # Marvel API
 
@@ -13,9 +10,9 @@
 
 ### Cadastro de Personagens
 
-- [ ] Deve poder cadastrar um personagem com as características conforme tabela abaixo:
-- [ ] Deve retornar o id do personagem ao realizar o cadastro
-- [ ] Não deve cadastrar personagem com nome duplicado
+- [x] Deve poder cadastrar um personagem com as características conforme tabela abaixo:
+- [x] Deve retornar o id do personagem ao realizar o cadastro
+- [x] Não deve cadastrar personagem com nome duplicado
 - [ ] Com exceção da idade, todos os campos são obrigatórios
 
 | campos | descrição                             | tipo     | obrigatório |
