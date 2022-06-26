@@ -24,6 +24,7 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
+//POST /sessions
 Cypress.Commands.add('setToken', () => {
   cy.api({
     method: 'POST',
@@ -31,7 +32,8 @@ Cypress.Commands.add('setToken', () => {
     body: {
       email: 'david-teixeira@qacademy.io',
       password: 'qa-cademy'
-    }
+    },
+    failOnStatusCode: false
   }).then(response => {
     expect(response.status).to.eql(200)
     Cypress.env('token', response.body.token)
@@ -39,11 +41,28 @@ Cypress.Commands.add('setToken', () => {
   })
 })
 
+//POST /delete
 Cypress.Commands.add('back2ThePast', () => {
   cy.api({
     method: 'DELETE',
-    url: `${Cypress.env('userID')}`
+    url: `/back2thepast/${response.body.user._id}`,
+    failOnStatusCode: false
   }).then(response => {
     expect(response.status).to.eql(200)
+  })
+})
+
+//POST /character
+Cypress.Commands.add('postCharacter', payLoad => {
+  cy.api({
+    method: 'POST',
+    url: '/characters',
+    body: payLoad,
+    headers: {
+      Authorization: Cypress.env('token')
+    },
+    failOnStatusCode: false
+  }).then(response => {
+    return response
   })
 })
