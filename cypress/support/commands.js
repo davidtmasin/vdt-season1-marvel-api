@@ -37,15 +37,16 @@ Cypress.Commands.add('setToken', () => {
   }).then(response => {
     expect(response.status).to.eql(200)
     Cypress.env('token', response.body.token)
-    Cypress.env('userID', `/back2thepast/${response.body.user._id}`)
+    Cypress.env('userID', response.body.user._id)
   })
 })
 
 //POST /delete
 Cypress.Commands.add('back2ThePast', () => {
+  Cypress.env('endpointDelete', `/back2thepast/${Cypress.env('userID')}`)
   cy.api({
     method: 'DELETE',
-    url: `/back2thepast/${response.body.user._id}`,
+    url: Cypress.env('endpointDelete'),
     failOnStatusCode: false
   }).then(response => {
     expect(response.status).to.eql(200)
